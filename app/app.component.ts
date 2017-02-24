@@ -28,6 +28,7 @@ newMeal(meal){
       this.masterMealList.push(meal);
     }
 
+// Putting dates into array for sorting use
 dateSort(){
   var dateList : string[] =[];
     for (var i = 0; i < this.masterMealList.length; i++){
