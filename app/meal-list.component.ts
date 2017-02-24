@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Meal } from './meal.model';
+declare var $ :any;
 
 @Component({
   selector: 'meal-list',
@@ -22,7 +23,11 @@ import { Meal } from './meal.model';
       class='col-xs-12'
       [mealToEdit] = 'editWhich'
       (edited) = 'edit($event)'
+      (edited) = 'totalCal()'
     ></edit-meal>
+    <div>
+      <p>Total Calories Consumed: {{total}}</p>
+    </div>
   `
 })
 
@@ -32,6 +37,7 @@ export class MealListComponent {
   @Input() mealList: Meal[];
   public editWhich: Meal = null;
   public mode: string = '';
+  public total: number = 0;
 
   detail(meal){
     if(meal.show === false){
@@ -47,4 +53,12 @@ export class MealListComponent {
   menu(choice){
     this.mode = choice;
   }
+
+  totalCal(){
+    this.total = 0;
+    for(var i=0; i<this.mealList.length; i++){
+    this.total = this.total+this.mealList[i].calories;
+  }
+  }
+
 }

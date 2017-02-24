@@ -8,6 +8,10 @@ import { Meal } from './meal.model';
     <meal-list class='col-xs-12'
       [mealList] = 'masterMealList'
     ></meal-list>
+    <new-meal
+      class='container'
+      (newSubmit) = 'newMeal($event)'
+    ></new-meal>
     </div>
   `
 })
@@ -18,5 +22,9 @@ export class AppComponent{
     new Meal('Fishball', 'Did not eat a lot', 150, false),
     new Meal('Steak', '12oz', 1200, false),
     ];
+
+newMeal(meal){
+      this.masterMealList.push(meal);
+    }
 
 }
