@@ -8,12 +8,14 @@ import { Meal } from './meal.model';
     <div>
       <input #newName placeholder='Name'>
       <input #newDetails placeholder='Details'>
-      <input #newDCalories placeholder='Calories'>
+      <input #newCalories placeholder='Calories'>
+      <input #newDate type='date' placeholder='Date'>
       <button (click)="
-        addMeal(newName.value, newDetails.value, newDCalories.value);
+        addMeal(newName.value, newDetails.value, newCalories.value, newDate.value);
         newName.value='';
         newDetails.value='';
-        newDCalories.value='';
+        newCalories.value='';
+        newDate.value='';
       ">Add</button>
     </div>
   `
@@ -21,9 +23,9 @@ import { Meal } from './meal.model';
 
 export class NewMealComponent {
   @Output() newSubmit = new EventEmitter();
-  addMeal(name: string, details: string, calories: string) {
+  addMeal(name: string, details: string, calories: string, date: string) {
     var intCal : number = parseInt(calories);
-    var newMealToAdd: Meal = new Meal(name, details,intCal, false);
+    var newMealToAdd: Meal = new Meal(name, details,intCal, date, false);
     this.newSubmit.emit(newMealToAdd);
   }
 }

@@ -8,7 +8,8 @@ import { Meal } from './meal.model';
 <h3>Editor</h3>
   <input [(ngModel)]="mealToEdit.name">
   <input [(ngModel)]="mealToEdit.details">
-  <input [(ngModel)]="mealToEdit.calories">
+  <input [(ngModel)]="mealToEdit.calories" type="number">
+  <input [(ngModel)]="mealToEdit.date" type='date'>
   <button (click)="doneEdit()">Done</button>
 </div>
   `
